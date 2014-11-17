@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="AutoReservation.Ui.Views.KundeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Converters="clr-namespace:AutoReservation.Ui.Converters"
+    xmlns:ViewModels="clr-namespace:AutoReservation.Ui.ViewModels">
+    <UserControl.DataContext>
+        <ViewModels:KundeViewModel />
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <Converters:DetailViewVisibilityConverter x:Key="DetailViewVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="250" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <!-- List -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" 
+                   FontSize="16" FontWeight="UltraBold" FontStyle="Italic">
+                Kunden-Liste
+            </Label>
+            <DataGrid Grid.Row="1"
+                      Name="dgKunden" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="False"
+                      SelectionMode="Single" IsReadOnly="True"
+                      ItemsSource="{Binding Kunden}" 
+                      SelectedItem="{Binding SelectedKunde, Mode=TwoWay}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nachname" Binding="{Binding Nachname}" />
+                    <DataGridTextColumn Header="Vorname" Binding="{Binding Vorname}" />
+                    <DataGridTextColumn Header="Geburtsdatum" Binding="{Binding Geburtsdatum, StringFormat=\{0:dd.MM.yyyy\}, Mode=TwoWay}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button HorizontalAlignment="Left" Command="{Binding LoadCommand}">
+                <Image Source="/Images/refresh_48_48.png" />
+            </Button>
+            <Button HorizontalAlignment="Left" Command="{Binding NewCommand}" Margin="5,0,0,0">
+                <Image Source="/Images/add_48_48.png" />
+            </Button>
+            <Button HorizontalAlignment="Left" Command="{Binding DeleteCommand}" Margin="5,0,0,0" Style="{DynamicResource ValidatedButtonStyle}">
+                <Image Source="/Images/delete_48_48.png" />
+            </Button>
+            <Button HorizontalAlignment="Left" Command="{Binding SaveCommand}" Margin="5,0,0,0" Style="{DynamicResource ValidatedButtonStyle}">
+                <Image Source="/Images/save_48_48.png"  />
+            </Button>
+            <ScrollViewer Margin="5,0,0,0" HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto">
+                <TextBlock Text="{Binding ErrorText}" Foreground="Red"/>
+            </ScrollViewer>
+        </StackPanel>
+        <!-- Details -->
+        <Grid Grid.Column="3" Visibility="{Binding SelectedKunde, Converter={StaticResource DetailViewVisibilityConverter}, Mode=TwoWay}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="1">Nachname</Label>
+            <Label Grid.Row="2">Vorname</Label>
+            <Label Grid.Row="3">Geburtsdatum</Label>
+
+            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" 
+                   FontSize="16" FontWeight="UltraBold" FontStyle="Italic">
+                Kunde Editieren
+            </Label>
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding SelectedKunde.Nachname}" />
+            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding SelectedKunde.Vorname}" />
+            <DatePicker Grid.Column="1" Grid.Row="3" SelectedDate="{Binding SelectedKunde.Geburtsdatum}" DisplayDateEnd="12/31/2020" DisplayDateStart="1/1/1900" />
+        </Grid>
+    </Grid>
+</UserControl>

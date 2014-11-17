@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AutoReservation.Common.DataTransferObjects.AutoDto">
+    <Position X="1" Y="3.25" Width="2" />
+    <Members>
+      <Field Name="autoKlasse" Hidden="true" />
+      <Field Name="basistarif" Hidden="true" />
+      <Field Name="id" Hidden="true" />
+      <Field Name="marke" Hidden="true" />
+      <Field Name="tagestarif" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAICAAASAACAEAAFBAAAAQQAAAAAAAAAAAAAAAAAAhA=</HashCode>
+      <FileName>DataTransferObjects\AutoDto.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AutoKlasse" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AutoReservation.Common.DataTransferObjects.ReservationDto">
+    <Position X="4" Y="3.25" Width="2" />
+    <Members>
+      <Field Name="auto" Hidden="true" />
+      <Field Name="bis" Hidden="true" />
+      <Field Name="kunde" Hidden="true" />
+      <Field Name="reservationNr" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+      <Field Name="von" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Auto" Type="AutoReservation.Common.DataTransferObjects.AutoDto" FixedToPoint="true">
+      <Path>
+        <Point X="4" Y="3.938" />
+        <Point X="3" Y="3.938" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Kunde" Type="AutoReservation.Common.DataTransferObjects.KundeDto" FixedToPoint="true">
+      <Path>
+        <Point X="6" Y="3.938" />
+        <Point X="7" Y="3.938" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AABAAAAAQACIAAAECAAAACAAAAAgIAAAICAAACAAABA=</HashCode>
+      <FileName>DataTransferObjects\ReservationDto.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Auto" />
+      <Property Name="Kunde" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AutoReservation.Common.DataTransferObjects.KundeDto">
+    <Position X="7" Y="3.25" Width="2" />
+    <Members>
+      <Field Name="geburtsdatum" Hidden="true" />
+      <Field Name="id" Hidden="true" />
+      <Field Name="nachname" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+      <Field Name="vorname" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgCAAAAEAAAAgAAAAIAAAAACAAAAAgAAAhA=</HashCode>
+      <FileName>DataTransferObjects\KundeDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoReservation.Common.DataTransferObjects.DtoBase">
+    <Position X="4" Y="0.75" Width="2" />
+    <Members>
+      <Field Name="propertyChangedEvent" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAACAAAAAAAAAAAAAgAAAAEAAAAAAAAAAABA=</HashCode>
+      <FileName>DataTransferObjects\DtoBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Enum Name="AutoReservation.Common.DataTransferObjects.AutoKlasse">
+    <Position X="1" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>DataTransferObjects\AutoKlasse.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

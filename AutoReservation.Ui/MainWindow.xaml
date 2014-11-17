@@ -1,0 +1,26 @@
+﻿<Window x:Class="AutoReservation.Ui.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Views="clr-namespace:AutoReservation.Ui.Views"
+    Title="Auto Reservation Application"
+    Width="1024" Height="768">
+    <Window.Resources>
+        <Style x:Key="ValidatedButtonStyle" TargetType="Button">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <TabControl>
+            <TabItem Header="Autos">
+                <Views:AutoView x:Name="avAutoView"/>
+            </TabItem>
+            <TabItem Header="Kunden">
+                <Views:KundeView x:Name="kvKundenView"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
