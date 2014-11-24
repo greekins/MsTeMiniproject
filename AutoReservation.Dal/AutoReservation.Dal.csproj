@@ -61,11 +61,66 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auto.cs">
+      <DependentUpon>AutoReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoReservation.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoReservation.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoReservation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoReservation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoReservation.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Kunde.cs">
+      <DependentUpon>AutoReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LuxusklasseAuto.cs">
+      <DependentUpon>AutoReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MittelklasseAuto.cs">
+      <DependentUpon>AutoReservation.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservation.cs">
+      <DependentUpon>AutoReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StandardAuto.cs">
+      <DependentUpon>AutoReservation.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="AutoReservation.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AutoReservation.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="AutoReservation.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutoReservation.edmx</DependentUpon>
+      <LastGenOutput>AutoReservation.Context.cs</LastGenOutput>
+    </None>
+    <None Include="AutoReservation.edmx.diagram">
+      <DependentUpon>AutoReservation.edmx</DependentUpon>
+    </None>
+    <None Include="AutoReservation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutoReservation.edmx</DependentUpon>
+      <LastGenOutput>AutoReservation.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
