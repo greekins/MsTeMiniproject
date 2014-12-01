@@ -7,10 +7,15 @@ namespace AutoReservation.Common.DataTransferObjects
     [DataContract]
     public class ReservationDto : DtoBase
     {
+        [DataMember]
         private DateTime von;
+        [DataMember]
         private DateTime bis;
+        [DataMember]
         private int reservationNr;
+        [DataMember]
         private AutoDto Auto;
+        [DataMember]
         private KundeDto Kunde;
 
         public DateTime Von

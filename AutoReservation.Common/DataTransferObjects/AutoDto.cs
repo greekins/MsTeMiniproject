@@ -7,10 +7,15 @@ namespace AutoReservation.Common.DataTransferObjects
     [DataContract]
     public class AutoDto : DtoBase
     {
+        [DataMember]
         private int id;
+        [DataMember]
         private string marke;
+        [DataMember]
         private int tagestarif;
+        [DataMember]
         private int basistarif;
+        [DataMember]
         private AutoKlasse AutoKlasse;
         public string Marke
         {
