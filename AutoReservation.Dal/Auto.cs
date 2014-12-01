@@ -21,8 +21,8 @@ namespace AutoReservation.Dal
     
         public int Id { get; set; }
         public string Marke { get; set; }
-        public int AutoKlasse { get; set; }
         public int Tagestarif { get; set; }
+        public int AutoKlasse { get; set; }
     
         public virtual ICollection<Reservation> Reservations { get; set; }
     }
