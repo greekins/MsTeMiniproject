@@ -10,39 +10,39 @@ namespace AutoReservation.Common.Interfaces
     {
         //Kunde
         [OperationContract]
-        public void UpdateKunde(KundeDto modified, KundeDto original);
+        void UpdateKunde(KundeDto modified, KundeDto original);
         [OperationContract]
-        public void GetKunden();
+        List<KundeDto> GetKunden();
         [OperationContract]
-        public void GetKunde(int id);
+        KundeDto GetKunde(int id);
         [OperationContract]
-        public void DeleteKunde(int id);
+        void DeleteKunde(int id);
         [OperationContract]
-        public void InsertKunde(KundeDto kunde);
+        void InsertKunde(KundeDto kunde);
 
         //Auto
         [OperationContract]
-        public void GetAutos();
+        List<AutoDto> GetAutos();
         [OperationContract]
-        public void GetAuto(int id);
+        AutoDto GetAuto(int id);
         [OperationContract]
-        public void UpdateAuto(AutoDto modified, AutoDto original);
+        void UpdateAuto(AutoDto modified, AutoDto original);
         [OperationContract]
-        public void DeleteAuto(int id);
+        void DeleteAuto(int id);
         [OperationContract]
-        public void InsertAuto(AutoDto auto);
+        void InsertAuto(AutoDto auto);
         
         //Reservation
         [OperationContract]
-        public void UpdateReservation(ReservationDto modified, ReservationDto original);
+        void UpdateReservation(ReservationDto modified, ReservationDto original);
         [OperationContract]
-        public void GetReservationen();
+        List<ReservationDto> GetReservationen();
         [OperationContract]
-        public void GetReservation(int id);
+        ReservationDto GetReservation(int id);
         [OperationContract]
-        public void DeleteReservation(int id);
+        void DeleteReservation(int id);
         [OperationContract]
-        public void InsertReservation(ReservationDto reservation);
+        void InsertReservation(ReservationDto reservation);
         
     }
 }
