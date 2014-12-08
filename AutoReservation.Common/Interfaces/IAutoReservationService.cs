@@ -9,7 +9,7 @@ namespace AutoReservation.Common.Interfaces
     public interface IAutoReservationService
     {
         //Kunde
-        [OperationContract]
+        [OperationContract, FaultContract(typeof(KundeDto))]
         void UpdateKunde(KundeDto modified, KundeDto original);
         [OperationContract]
         List<KundeDto> GetKunden();
