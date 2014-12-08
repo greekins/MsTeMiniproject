@@ -16,7 +16,14 @@ namespace AutoReservation.Common.DataTransferObjects
         [DataMember]
         private int basistarif;
         [DataMember]
-        private AutoKlasse AutoKlasse;
+        private  AutoKlasse autoKlasse;
+
+        public AutoKlasse AutoKlasse
+        {
+            get { return autoKlasse; }
+        }
+
+
         public string Marke
         {
             get { return marke; }
@@ -68,7 +75,7 @@ namespace AutoReservation.Common.DataTransferObjects
             {
                 error.AppendLine("- Tagestarif muss grösser als 0 sein.");
             }
-            if (AutoKlasse == AutoKlasse.Luxusklasse && basistarif <= 0)
+            if (autoKlasse == AutoKlasse.Luxusklasse && basistarif <= 0)
             {
                 error.AppendLine("- Basistarif eines Luxusautos muss grösser als 0 sein.");
             }
@@ -85,7 +92,7 @@ namespace AutoReservation.Common.DataTransferObjects
                 Id = Id,
                 Marke = Marke,
                 Tagestarif = Tagestarif,
-                AutoKlasse = AutoKlasse,
+                autoKlasse = autoKlasse,
                 Basistarif = Basistarif
             };
         }
@@ -98,7 +105,7 @@ namespace AutoReservation.Common.DataTransferObjects
                 Marke,
                 Tagestarif,
                 Basistarif,
-                AutoKlasse);
+                autoKlasse);
         }
 
     }

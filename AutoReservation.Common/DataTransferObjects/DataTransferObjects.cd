@@ -3,7 +3,6 @@
   <Class Name="AutoReservation.Common.DataTransferObjects.AutoDto">
     <Position X="1" Y="3.25" Width="2" />
     <Members>
-      <Field Name="autoKlasse" Hidden="true" />
       <Field Name="basistarif" Hidden="true" />
       <Field Name="id" Hidden="true" />
       <Field Name="marke" Hidden="true" />
@@ -15,23 +14,21 @@
       <FileName>DataTransferObjects\AutoDto.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="AutoKlasse" />
+      <Field Name="autoKlasse" />
     </ShowAsAssociation>
   </Class>
   <Class Name="AutoReservation.Common.DataTransferObjects.ReservationDto">
     <Position X="4" Y="3.25" Width="2" />
     <Members>
-      <Field Name="auto" Hidden="true" />
       <Field Name="bis" Hidden="true" />
-      <Field Name="kunde" Hidden="true" />
       <Field Name="reservationNr" Hidden="true" />
       <Method Name="ToString" Hidden="true" />
       <Field Name="von" Hidden="true" />
     </Members>
     <AssociationLine Name="Auto" Type="AutoReservation.Common.DataTransferObjects.AutoDto" FixedToPoint="true">
       <Path>
-        <Point X="4" Y="3.938" />
-        <Point X="3" Y="3.938" />
+        <Point X="4" Y="3.995" />
+        <Point X="3" Y="3.995" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="Kunde" Type="AutoReservation.Common.DataTransferObjects.KundeDto" FixedToPoint="true">
@@ -41,25 +38,24 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AABAAAAAQACIAAAECAAAACAAAAAgIAAAICAAACAAABA=</HashCode>
+      <HashCode>AABAAAAAQACIAAAECAAAACAAAAAgAAAAACAAACAAABA=</HashCode>
       <FileName>DataTransferObjects\ReservationDto.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Auto" />
-      <Property Name="Kunde" />
+      <Field Name="Auto" />
+      <Field Name="Kunde" />
     </ShowAsAssociation>
   </Class>
   <Class Name="AutoReservation.Common.DataTransferObjects.KundeDto">
     <Position X="7" Y="3.25" Width="2" />
     <Members>
-      <Field Name="geburtsdatum" Hidden="true" />
       <Field Name="id" Hidden="true" />
       <Field Name="nachname" Hidden="true" />
       <Method Name="ToString" Hidden="true" />
       <Field Name="vorname" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAACAAAAAgCAAAAEAAAAgAAAAIAAAAACAAAAAgAAAhA=</HashCode>
+      <HashCode>AAACAAAAAgCAAAAEAAAAgAAAAAAAAAACAAAAAgAAApA=</HashCode>
       <FileName>DataTransferObjects\KundeDto.cs</FileName>
     </TypeIdentifier>
   </Class>
