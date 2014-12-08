@@ -60,6 +60,7 @@ namespace AutoReservation.BusinessLayer
             {
                 Kunde kunde = context.Kunden
                     .SingleOrDefault(r => r.Id == kundenNr);
+                context.Kunden.Attach(kunde);
                 context.Kunden.Remove(kunde);
             }
         }
@@ -110,6 +111,7 @@ namespace AutoReservation.BusinessLayer
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
                 var auto = context.Autos.SingleOrDefault(a => a.Id == id);
+                context.Autos.Attach(auto);
                 context.Autos.Remove(auto);
             }
         }
@@ -157,6 +159,7 @@ namespace AutoReservation.BusinessLayer
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
                 var reservation = context.Reservationen.SingleOrDefault(r => r.ReservationNr == id);
+                context.Reservationen.Attach(reservation);
                 context.Reservationen.Remove(reservation);
             }
         }
