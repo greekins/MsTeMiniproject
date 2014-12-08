@@ -29,6 +29,7 @@ namespace AutoReservation.Service.Wcf
         {
             try
             {
+                WriteActualMethod();
                 component.UpdateKunde(modified.ConvertToEntity(), original.ConvertToEntity());
             }
             catch(LocalOptimisticConcurrencyException<Kunde> e) 
@@ -39,31 +40,37 @@ namespace AutoReservation.Service.Wcf
 
         public System.Collections.Generic.List<KundeDto> GetKunden()
         {
+            WriteActualMethod();
             return component.GetKunden().ConvertToDtos();
         }
 
         public KundeDto GetKunde(int id)
         {
+            WriteActualMethod();
             return component.GetKunde(id).ConvertToDto();
         }
 
         public void DeleteKunde(int id)
         {
+            WriteActualMethod();
             component.DeleteKunde(id);
         }
 
         public void InsertKunde(KundeDto kunde)
         {
+            WriteActualMethod();
             component.InsertKunde(kunde.ConvertToEntity());
         }
 
         public System.Collections.Generic.List<AutoDto> GetAutos()
         {
+            WriteActualMethod();
             return component.GetAutos().ConvertToDtos();
         }
 
         public AutoDto GetAuto(int id)
         {
+            WriteActualMethod();
             return component.GetAuto(id).ConvertToDto();
         }
 
@@ -71,6 +78,7 @@ namespace AutoReservation.Service.Wcf
         {
             try
             {
+                WriteActualMethod();
                 component.UpdateAuto(modified.ConvertToEntity(), original.ConvertToEntity());
             }
             catch (LocalOptimisticConcurrencyException<Auto> e)
@@ -81,11 +89,13 @@ namespace AutoReservation.Service.Wcf
 
         public void DeleteAuto(int id)
         {
+            WriteActualMethod();
             component.DeleteAuto(id);
         }
 
         public void InsertAuto(AutoDto auto)
         {
+            WriteActualMethod();
             component.InsertAuto(auto.ConvertToEntity());
         }
 
@@ -93,6 +103,7 @@ namespace AutoReservation.Service.Wcf
         {
             try
             {
+                WriteActualMethod();
                 component.UpdateReservation(modified.ConvertToEntity(), original.ConvertToEntity());
             }
             catch (LocalOptimisticConcurrencyException<Reservation> e)
@@ -103,21 +114,25 @@ namespace AutoReservation.Service.Wcf
 
         public System.Collections.Generic.List<ReservationDto> GetReservationen()
         {
+            WriteActualMethod();
             return component.GetReservationen().ConvertToDtos();
         }
 
         public Common.DataTransferObjects.ReservationDto GetReservation(int id)
         {
+            WriteActualMethod();
             return component.GetReservation(id).ConvertToDto();
         }
 
         public void DeleteReservation(int id)
         {
+            WriteActualMethod();
             component.DeleteReservation(id);
         }
 
         public void InsertReservation(ReservationDto reservation)
         {
+            WriteActualMethod();
             component.InsertReservation(reservation.ConvertToEntity());
         }
     }
