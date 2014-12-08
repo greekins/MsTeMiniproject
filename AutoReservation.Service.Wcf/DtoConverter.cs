@@ -47,7 +47,7 @@ namespace AutoReservation.Service.Wcf
             if (auto is LuxusklasseAuto)
             {
                 dto.AutoKlasse = AutoKlasse.Luxusklasse;
-                dto.Basistarif = ((LuxusklasseAuto)auto).Basistarif;
+                dto.Basistarif = ((LuxusklasseAuto)auto).Basistarif.Value;
             }
 
 

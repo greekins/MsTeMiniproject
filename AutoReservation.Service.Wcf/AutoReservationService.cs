@@ -29,7 +29,7 @@ namespace AutoReservation.Service.Wcf
         {
             try
             {
-                component.UpdateKunde(DtoConverter.ConvertToEntity(modified), DtoConverter.ConvertToEntity(original));
+                component.UpdateKunde(modified.ConvertToEntity(), original.ConvertToEntity());
             }
             catch(LocalOptimisticConcurrencyException<Kunde> e) 
             {
@@ -39,72 +39,86 @@ namespace AutoReservation.Service.Wcf
 
         public System.Collections.Generic.List<KundeDto> GetKunden()
         {
-            throw new NotImplementedException();
+            return component.GetKunden().ConvertToDtos();
         }
 
-        public .KundeDto GetKunde(int id)
+        public KundeDto GetKunde(int id)
         {
-            throw new NotImplementedException();
+            return component.GetKunde(id).ConvertToDto();
         }
 
         public void DeleteKunde(int id)
         {
-            throw new NotImplementedException();
+            component.DeleteKunde(id);
         }
 
         public void InsertKunde(KundeDto kunde)
         {
-            throw new NotImplementedException();
+            component.InsertKunde(kunde.ConvertToEntity());
         }
 
         public System.Collections.Generic.List<AutoDto> GetAutos()
         {
-            throw new NotImplementedException();
+            return component.GetAutos().ConvertToDtos();
         }
 
         public AutoDto GetAuto(int id)
         {
-            throw new NotImplementedException();
+            return component.GetAuto(id).ConvertToDto();
         }
 
         public void UpdateAuto(AutoDto modified, AutoDto original)
         {
-            throw new NotImplementedException();
+            try
+            {
+                component.UpdateAuto(modified.ConvertToEntity(), original.ConvertToEntity());
+            }
+            catch (LocalOptimisticConcurrencyException<Auto> e)
+            {
+                throw new FaultException<AutoDto>(e.MergedEntity.ConvertToDto());
+            }
         }
 
         public void DeleteAuto(int id)
         {
-            throw new NotImplementedException();
+            component.DeleteAuto(id);
         }
 
         public void InsertAuto(AutoDto auto)
         {
-            throw new NotImplementedException();
+            component.InsertAuto(auto.ConvertToEntity());
         }
 
         public void UpdateReservation(ReservationDto modified, ReservationDto original)
         {
-            throw new NotImplementedException();
+            try
+            {
+                component.UpdateReservation(modified.ConvertToEntity(), original.ConvertToEntity());
+            }
+            catch (LocalOptimisticConcurrencyException<Reservation> e)
+            {
+                throw new FaultException<ReservationDto>(e.MergedEntity.ConvertToDto());
+            }
         }
 
         public System.Collections.Generic.List<ReservationDto> GetReservationen()
         {
-            throw new NotImplementedException();
+            return component.GetReservationen().ConvertToDtos();
         }
 
         public Common.DataTransferObjects.ReservationDto GetReservation(int id)
         {
-            throw new NotImplementedException();
+            return component.GetReservation(id).ConvertToDto();
         }
 
         public void DeleteReservation(int id)
         {
-            throw new NotImplementedException();
+            component.DeleteReservation(id);
         }
 
         public void InsertReservation(ReservationDto reservation)
         {
-            throw new NotImplementedException();
+            component.InsertReservation(reservation.ConvertToEntity());
         }
     }
 }

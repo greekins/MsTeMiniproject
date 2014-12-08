@@ -25,7 +25,7 @@ namespace AutoReservation.Common.Interfaces
         List<AutoDto> GetAutos();
         [OperationContract]
         AutoDto GetAuto(int id);
-        [OperationContract]
+        [OperationContract, FaultContract(typeof(AutoDto))]
         void UpdateAuto(AutoDto modified, AutoDto original);
         [OperationContract]
         void DeleteAuto(int id);
@@ -33,7 +33,7 @@ namespace AutoReservation.Common.Interfaces
         void InsertAuto(AutoDto auto);
         
         //Reservation
-        [OperationContract]
+        [OperationContract, FaultContract(typeof(ReservationDto))]
         void UpdateReservation(ReservationDto modified, ReservationDto original);
         [OperationContract]
         List<ReservationDto> GetReservationen();

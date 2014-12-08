@@ -35,16 +35,16 @@ namespace AutoReservation.BusinessLayer
             }
 
         }
-        public IEnumerable<Kunde> GetKunden()
+        public List<Kunde> GetKunden()
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
-                IEnumerable<Kunde> result = context.Kunden.ToList();
+                var result = context.Kunden.ToList();
                 return result;
             }
         }
 
-        public Kunde GetKundeByNr(int kundenNr)
+        public Kunde GetKunde(int kundenNr)
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {

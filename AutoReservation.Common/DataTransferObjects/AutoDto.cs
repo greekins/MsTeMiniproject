@@ -21,6 +21,11 @@ namespace AutoReservation.Common.DataTransferObjects
         public AutoKlasse AutoKlasse
         {
             get { return autoKlasse; }
+            set
+            {
+                autoKlasse = value;
+                RaisePropertyChanged();
+            }
         }
 
 

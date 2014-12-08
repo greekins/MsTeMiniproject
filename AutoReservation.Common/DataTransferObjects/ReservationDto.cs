@@ -14,9 +14,29 @@ namespace AutoReservation.Common.DataTransferObjects
         [DataMember]
         private int reservationNr;
         [DataMember]
-        private AutoDto Auto;
+        private AutoDto auto;
         [DataMember]
-        private KundeDto Kunde;
+        private KundeDto kunde;
+
+        public AutoDto Auto
+        {
+            get { return auto; }
+            set 
+            {
+                auto = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public KundeDto Kunde
+        {
+            get { return kunde; }
+            set
+            {
+                kunde = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public DateTime Von
         {
@@ -61,25 +81,25 @@ namespace AutoReservation.Common.DataTransferObjects
             {
                 error.AppendLine("- Von-Datum ist grösser als Bis-Datum.");
             }
-            if (Auto == null)
+            if (auto == null)
             {
                 error.AppendLine("- Auto ist nicht zugewiesen.");
             }
             else
             {
-                string autoError = Auto.Validate();
+                string autoError = auto.Validate();
                 if (!string.IsNullOrEmpty(autoError))
                 {
                     error.AppendLine(autoError);
                 }
             }
-            if (Kunde == null)
+            if (kunde == null)
             {
                 error.AppendLine("- Kunde ist nicht zugewiesen.");
             }
             else
             {
-                string kundeError = Kunde.Validate();
+                string kundeError = kunde.Validate();
                 if (!string.IsNullOrEmpty(kundeError))
                 {
                     error.AppendLine(kundeError);
@@ -99,8 +119,8 @@ namespace AutoReservation.Common.DataTransferObjects
                 ReservationNr = ReservationNr,
                 Von = Von,
                 Bis = Bis,
-                Auto = (AutoDto)Auto.Clone(),
-                Kunde = (KundeDto)Kunde.Clone()
+                auto = (AutoDto)auto.Clone(),
+                kunde = (KundeDto)kunde.Clone()
             };
         }
 
@@ -111,8 +131,8 @@ namespace AutoReservation.Common.DataTransferObjects
                 ReservationNr,
                 Von,
                 Bis,
-                Auto,
-                Kunde);
+                auto,
+                kunde);
         }
 
     }
