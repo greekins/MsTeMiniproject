@@ -153,7 +153,7 @@
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="LuxusklasseAuto" BaseType="AutoReservationModel.Auto" >
-          <Property Name="Basistarif" Type="Int32" Nullable="false" />
+          <Property Name="Basistarif" Type="Int32" />
         </EntityType>
         <EntityType Name="MittelklasseAuto" BaseType="AutoReservationModel.Auto" />
         <EntityType Name="StandardAuto" BaseType="AutoReservationModel.Auto" />
@@ -170,6 +170,22 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Tagestarif" ColumnName="Tagestarif" />
                 <ScalarProperty Name="Marke" ColumnName="Marke" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="AutoReservationModel.LuxusklasseAuto">
+              <MappingFragment StoreEntitySet="Auto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Basistarif" ColumnName="Basistarif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="AutoReservationModel.StandardAuto">
+              <MappingFragment StoreEntitySet="Auto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="AutoReservationModel.MittelklasseAuto">
+              <MappingFragment StoreEntitySet="Auto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
