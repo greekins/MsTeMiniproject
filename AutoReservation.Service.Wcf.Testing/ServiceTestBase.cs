@@ -23,21 +23,21 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void AutosTest()
         {
-            var autos = Target.GetAutos();
+            var autos = Target.Autos;
             Assert.AreEqual(3, autos.Count);
         }
 
         [TestMethod]
         public void KundenTest()
         {
-            var kunden = Target.GetKunden();
+            var kunden = Target.Kunden;
             Assert.AreEqual(4, kunden.Count);
         }
 
         [TestMethod]
         public void ReservationenTest()
         {
-            var reservationen = Target.GetReservationen();
+            var reservationen = Target.Reservationen;
             Assert.AreEqual(3, reservationen.Count);
         }
 
@@ -80,7 +80,7 @@ namespace AutoReservation.Service.Wcf.Testing
                 Marke = "BMW 130i",
             };
             Target.InsertAuto(auto);
-            var autoRetrieved = Target.GetAutos().FirstOrDefault(a =>
+            var autoRetrieved = Target.Autos.FirstOrDefault(a =>
                 a.Marke == auto.Marke);
             Assert.IsNotNull(autoRetrieved);
         }
@@ -95,7 +95,7 @@ namespace AutoReservation.Service.Wcf.Testing
                 Geburtsdatum = DateTime.Parse("1950-12-31 00:00:00")
             };
             Target.InsertKunde(kunde);
-            var kundeRetrieved = Target.GetKunden().FirstOrDefault(k => 
+            var kundeRetrieved = Target.Kunden.FirstOrDefault(k => 
                 k.Vorname == kunde.Vorname && 
                 k.Nachname == kunde.Nachname);
             Assert.IsNotNull(kundeRetrieved);
@@ -104,8 +104,8 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void InsertReservationTest()
         {
-            var auto = Target.GetAutos().First();
-            var kunde = Target.GetKunden().Last();
+            var auto = Target.Autos.First();
+            var kunde = Target.Kunden.Last();
             var reservation = new ReservationDto()
             {
                 Auto = auto,
@@ -114,7 +114,7 @@ namespace AutoReservation.Service.Wcf.Testing
                 Bis = DateTime.Now.AddDays(7)
             };
             Target.InsertReservation(reservation);
-            var reservationRetrieved = Target.GetReservationen().FirstOrDefault(r =>
+            var reservationRetrieved = Target.Reservationen.FirstOrDefault(r =>
                 r.Kunde.Id == kunde.Id &&
                 r.Auto.Id == auto.Id);
             Assert.IsNotNull(reservationRetrieved);
@@ -123,7 +123,7 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void UpdateAutoTest()
         {
-            var original = Target.GetAutos().First();
+            var original = Target.Autos.First();
             var modified = modifiedAuto(original, 200);
             Target.UpdateAuto(modified, original);
         }
@@ -143,7 +143,7 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void UpdateKundeTest()
         {
-            var original = Target.GetKunden().First();
+            var original = Target.Kunden.First();
             var modified = modifiedKunde(original, "TEST-NACHNAME-1");
             Target.UpdateKunde(modified, original);
         }
@@ -162,7 +162,7 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void UpdateReservationTest()
         {
-            var original = Target.GetReservationen().First();
+            var original = Target.Reservationen.First();
             var modified = modifiedReservation(original, 1);
             Target.UpdateReservation(modified, original);
         }
@@ -227,7 +227,7 @@ namespace AutoReservation.Service.Wcf.Testing
             var kunde = Target.GetKunde(1);
             Assert.IsNotNull(kunde);
 
-            Target.DeleteKunde(1);
+            Target.DeleteKunde(kunde);
             Assert.IsNull(Target.GetKunde(1));
         }
 
@@ -237,7 +237,7 @@ namespace AutoReservation.Service.Wcf.Testing
             var auto = Target.GetAuto(1);
             Assert.IsNotNull(auto);
 
-            Target.DeleteAuto(1);
+            Target.DeleteAuto(auto);
             Assert.IsNull(Target.GetAuto(1));
         }
 
@@ -247,7 +247,7 @@ namespace AutoReservation.Service.Wcf.Testing
             var reservation = Target.GetReservation(1);
             Assert.IsNotNull(reservation);
 
-            Target.DeleteReservation(1);
+            Target.DeleteReservation(reservation);
             Assert.IsNull(Target.GetReservation(1));
         }
     }
