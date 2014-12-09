@@ -15,6 +15,9 @@
     </Window.Resources>
     <Grid>
         <TabControl>
+            <TabItem Header="Reservationen">
+                <Views:ReservationView x:Name="rvReservationView"/>
+            </TabItem>
             <TabItem Header="Autos">
                 <Views:AutoView x:Name="avAutoView"/>
             </TabItem>
