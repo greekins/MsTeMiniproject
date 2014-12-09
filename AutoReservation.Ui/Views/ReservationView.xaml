@@ -92,11 +92,8 @@
                    FontSize="16" FontWeight="UltraBold" FontStyle="Italic">
                 Reservation Editieren
             </Label>
-            <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Autos}" DisplayMemberPath="Marke" SelectedItem="{Binding SelectedReservation.Auto, Mode=TwoWay}" />
-            <ComboBox Grid.Column="1" Grid.Row="2" 
-                      ItemsSource="{Binding Kunden}"
-                      SelectedItem="{Binding SelectedReservation.Kunde, Mode=TwoWay}"
-                      >
+            <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Autos}" DisplayMemberPath="Marke"  Text="{Binding SelectedReservation.Auto.Marke}" SelectedItem="{Binding SelectedReservation.Auto, Mode=TwoWay}" />
+            <ComboBox Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Kunden}" SelectedItem="{Binding SelectedReservation.Kunde, Mode=TwoWay}" >
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
