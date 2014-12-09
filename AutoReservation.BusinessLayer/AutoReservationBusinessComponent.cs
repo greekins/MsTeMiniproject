@@ -39,25 +39,29 @@ namespace AutoReservation.BusinessLayer
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
-                var result = context.Kunden.ToList();
+                var result = context.Kunden
+                    .Include(k => k.Reservations)
+                    .ToList();
                 return result;
             }
         }
 
-        public Kunde GetKunde(int kundenNr)
+        public Kunde GetKunde(int id)
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
-                Kunde result = context.Kunden
-                    .SingleOrDefault(r => r.Id == kundenNr);
-                return result;
+                var kunde = context.Kunden
+                    .Include(k => k.Reservations)
+                    .SingleOrDefault(k => k.Id == id);
+                return kunde;
             }
         }
 
-        public void DeleteKunde(Kunde kunde)
+        public void DeleteKunde(int kundenNr)
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
+                Kunde kunde = context.Kunden.SingleOrDefault(r => r.Id == kundenNr);
                 context.Kunden.Attach(kunde);
                 context.Kunden.Remove(kunde);
                 context.SaveChanges();
@@ -69,6 +73,7 @@ namespace AutoReservation.BusinessLayer
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
                 context.Kunden.Add(kunde);
+                context.SaveChanges();
             }
         }
 
@@ -105,10 +110,11 @@ namespace AutoReservation.BusinessLayer
                 }
             }
         }
-        public void DeleteAuto(Auto auto)
+        public void DeleteAuto(int id)
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
+                var auto = context.Autos.SingleOrDefault(a => a.Id == id);
                 context.Autos.Attach(auto);
                 context.Autos.Remove(auto);
                 context.SaveChanges();
@@ -119,6 +125,7 @@ namespace AutoReservation.BusinessLayer
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
                 context.Autos.Add(auto);
+                context.SaveChanges();
             }
         }
 
@@ -143,20 +150,28 @@ namespace AutoReservation.BusinessLayer
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
-                return context.Reservationen.ToList();
+                return context.Reservationen
+                    .Include(r => r.Auto)
+                    .Include(r => r.Kunde)
+                    .ToList();
             }
         }
-        public Reservation GetReservation(int id)
+        public Reservation GetReservation(int reservationNr)
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
-                return context.Reservationen.SingleOrDefault(r => r.ReservationNr == id);
+                return context.Reservationen
+                    .Include(r => r.Auto)
+                    .Include(r => r.Kunde)
+                    .SingleOrDefault(r => r.ReservationNr == reservationNr);
             }
         }
-        public void DeleteReservation(Reservation reservation)
+        public void DeleteReservation(int reservationNr)
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
+                var reservation = context.Reservationen
+                    .SingleOrDefault(r => r.ReservationNr == reservationNr);
                 context.Reservationen.Attach(reservation);
                 context.Reservationen.Remove(reservation);
                 context.SaveChanges();
@@ -167,6 +182,7 @@ namespace AutoReservation.BusinessLayer
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
                 context.Reservationen.Add(reservation);
+                context.SaveChanges();
             }
         }
 
