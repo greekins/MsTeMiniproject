@@ -110,10 +110,6 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-
-            <!--ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Autos}" DisplayMemberPath="Marke" SelectedIndex="{Binding SelectedReservation.Auto, Mode=TwoWay}" /-->
-            <!--TextBox Grid.Column="1" Grid.Row="1" Text="{Binding SelecteReservation.Auto}" /-->
-            <!--TextBox Grid.Column="1" Grid.Row="2" Text="{Binding SelectedReservation.Auto.Marke}" /-->
             <DatePicker Grid.Column="1" Grid.Row="3" SelectedDate="{Binding SelectedReservation.Von}" DisplayDateEnd="12/31/2020" DisplayDateStart="1/1/1900" />
             <DatePicker Grid.Column="1" Grid.Row="4" SelectedDate="{Binding SelectedReservation.Bis}" DisplayDateEnd="12/31/2020" DisplayDateStart="1/1/1900" />
         </Grid>
