@@ -94,6 +94,20 @@ namespace AutoReservation.Ui.ViewModels
                 Reservationen.Add(reservation);
                 reservationenOriginal.Add((ReservationDto)reservation.Clone());
             }
+
+            Autos.Clear();
+            foreach (AutoDto auto in Service.Autos)
+            {
+                Autos.Add(auto);
+
+            }
+
+            Kunden.Clear();
+            foreach (KundeDto kunde in Service.Kunden)
+            {
+                Kunden.Add(kunde);
+            }
+
             SelectedReservation = Reservationen.FirstOrDefault();
         }
 
@@ -186,7 +200,7 @@ namespace AutoReservation.Ui.ViewModels
 
         private void New()
         {
-            Reservationen.Add(new ReservationDto());
+            Reservationen.Add(new ReservationDto() { Von = DateTime.Today, Bis = DateTime.Today});
         }
 
         private bool CanNew()
