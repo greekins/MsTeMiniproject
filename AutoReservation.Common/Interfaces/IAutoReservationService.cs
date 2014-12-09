@@ -8,27 +8,39 @@ namespace AutoReservation.Common.Interfaces
     [ServiceContract]
     public interface IAutoReservationService
     {
+        List<KundeDto> Kunden
+        {
+            [OperationContract]
+            get;
+        }
+        List<AutoDto> Autos
+        {
+            [OperationContract]
+            get;
+        }
+        List<ReservationDto> Reservationen
+        {
+            [OperationContract]
+            get;
+        }
+
         //Kunde
         [OperationContract, FaultContract(typeof(KundeDto))]
         void UpdateKunde(KundeDto modified, KundeDto original);
         [OperationContract]
-        List<KundeDto> GetKunden();
-        [OperationContract]
         KundeDto GetKunde(int id);
         [OperationContract]
-        void DeleteKunde(int id);
+        void DeleteKunde(KundeDto kunde);
         [OperationContract]
         void InsertKunde(KundeDto kunde);
 
         //Auto
         [OperationContract]
-        List<AutoDto> GetAutos();
-        [OperationContract]
         AutoDto GetAuto(int id);
         [OperationContract, FaultContract(typeof(AutoDto))]
         void UpdateAuto(AutoDto modified, AutoDto original);
         [OperationContract]
-        void DeleteAuto(int id);
+        void DeleteAuto(AutoDto auto);
         [OperationContract]
         void InsertAuto(AutoDto auto);
         
@@ -36,11 +48,9 @@ namespace AutoReservation.Common.Interfaces
         [OperationContract, FaultContract(typeof(ReservationDto))]
         void UpdateReservation(ReservationDto modified, ReservationDto original);
         [OperationContract]
-        List<ReservationDto> GetReservationen();
-        [OperationContract]
         ReservationDto GetReservation(int id);
         [OperationContract]
-        void DeleteReservation(int id);
+        void DeleteReservation(ReservationDto reservation);
         [OperationContract]
         void InsertReservation(ReservationDto reservation);
         

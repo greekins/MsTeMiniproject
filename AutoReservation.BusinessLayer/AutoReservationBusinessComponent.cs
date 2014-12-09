@@ -54,14 +54,13 @@ namespace AutoReservation.BusinessLayer
             }
         }
 
-        public void DeleteKunde(int kundenNr)
+        public void DeleteKunde(Kunde kunde)
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
-                Kunde kunde = context.Kunden
-                    .SingleOrDefault(r => r.Id == kundenNr);
                 context.Kunden.Attach(kunde);
                 context.Kunden.Remove(kunde);
+                context.SaveChanges();
             }
         }
 
@@ -106,13 +105,13 @@ namespace AutoReservation.BusinessLayer
                 }
             }
         }
-        public void DeleteAuto(int id)
+        public void DeleteAuto(Auto auto)
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
-                var auto = context.Autos.SingleOrDefault(a => a.Id == id);
                 context.Autos.Attach(auto);
                 context.Autos.Remove(auto);
+                context.SaveChanges();
             }
         }
         public void InsertAuto(Auto auto)
@@ -154,13 +153,13 @@ namespace AutoReservation.BusinessLayer
                 return context.Reservationen.SingleOrDefault(r => r.ReservationNr == id);
             }
         }
-        public void DeleteReservation(int id)
+        public void DeleteReservation(Reservation reservation)
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
-                var reservation = context.Reservationen.SingleOrDefault(r => r.ReservationNr == id);
                 context.Reservationen.Attach(reservation);
                 context.Reservationen.Remove(reservation);
+                context.SaveChanges();
             }
         }
         public void InsertReservation(Reservation reservation)

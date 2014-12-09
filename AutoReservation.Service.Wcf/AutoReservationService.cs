@@ -5,6 +5,7 @@ using System;
 using System.Diagnostics;
 using System.ServiceModel;
 using AutoReservation.Dal;
+using System.Collections.Generic;
 
 namespace AutoReservation.Service.Wcf
 {
@@ -38,10 +39,13 @@ namespace AutoReservation.Service.Wcf
             }
         }
 
-        public System.Collections.Generic.List<KundeDto> GetKunden()
+        List<KundeDto> IAutoReservationService.Kunden
         {
-            WriteActualMethod();
-            return component.GetKunden().ConvertToDtos();
+            get
+            {
+                WriteActualMethod();
+                return component.GetKunden().ConvertToDtos();
+            }
         }
 
         public KundeDto GetKunde(int id)
@@ -50,10 +54,10 @@ namespace AutoReservation.Service.Wcf
             return component.GetKunde(id).ConvertToDto();
         }
 
-        public void DeleteKunde(int id)
+        public void DeleteKunde(KundeDto kunde)
         {
             WriteActualMethod();
-            component.DeleteKunde(id);
+            component.DeleteKunde(DtoConverter.ConvertToEntity(kunde));
         }
 
         public void InsertKunde(KundeDto kunde)
@@ -62,10 +66,13 @@ namespace AutoReservation.Service.Wcf
             component.InsertKunde(kunde.ConvertToEntity());
         }
 
-        public System.Collections.Generic.List<AutoDto> GetAutos()
+        List<AutoDto> IAutoReservationService.Autos
         {
-            WriteActualMethod();
-            return component.GetAutos().ConvertToDtos();
+            get
+            {
+                WriteActualMethod();
+                return component.GetAutos().ConvertToDtos();
+            }
         }
 
         public AutoDto GetAuto(int id)
@@ -87,10 +94,10 @@ namespace AutoReservation.Service.Wcf
             }
         }
 
-        public void DeleteAuto(int id)
+        public void DeleteAuto(AutoDto auto)
         {
             WriteActualMethod();
-            component.DeleteAuto(id);
+            component.DeleteAuto(DtoConverter.ConvertToEntity(auto));
         }
 
         public void InsertAuto(AutoDto auto)
@@ -112,10 +119,13 @@ namespace AutoReservation.Service.Wcf
             }
         }
 
-        public System.Collections.Generic.List<ReservationDto> GetReservationen()
+        List<ReservationDto> IAutoReservationService.Reservationen
         {
-            WriteActualMethod();
-            return component.GetReservationen().ConvertToDtos();
+            get
+            {
+                WriteActualMethod();
+                return component.GetReservationen().ConvertToDtos();
+            }
         }
 
         public Common.DataTransferObjects.ReservationDto GetReservation(int id)
@@ -124,10 +134,10 @@ namespace AutoReservation.Service.Wcf
             return component.GetReservation(id).ConvertToDto();
         }
 
-        public void DeleteReservation(int id)
+        public void DeleteReservation(ReservationDto reservation)
         {
             WriteActualMethod();
-            component.DeleteReservation(id);
+            component.DeleteReservation(DtoConverter.ConvertToEntity(reservation));
         }
 
         public void InsertReservation(ReservationDto reservation)
